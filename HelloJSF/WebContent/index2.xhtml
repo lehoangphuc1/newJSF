@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html">
+  <h:head>
+    <title>Facelet Title</title>
+  </h:head>
+  <h:body>
+  <center>
+    <h2>Categories</h2>
+    <h:form>
+      Enter Category : <h:inputText value="#{category.category_name}"></h:inputText>
+      <h:commandButton value="Add" action="#{category.add_Category}"></h:commandButton>
+    </h:form>
+    <h:form>
+    <h:dataTable value="#{category.get_all_category}" var="cat">
+    <h:column>
+      <f:facet name="header">Sl NO</f:facet>
+      <h:outputText value="#{cat.sl_no}"></h:outputText>
+    </h:column>
+    <h:column>
+      <f:facet name="header">Category</f:facet>
+      <h:outputText value="#{cat.category_name}" ></h:outputText>
+    </h:column>
+    <h:column>
+      <f:facet name="header">Edit</f:facet>
+      <h:commandButton value="Edit" action="#{category.edit_Category}">
+        <f:param name="action" value="#{cat.sl_no}" />
+      </h:commandButton>
+    </h:column>
+    <h:column>
+      <f:facet name="header">Delete</f:facet>
+      <h:commandButton value="Delete" action="#{category.delete_Category}">
+        <f:param name="action" value="#{cat.sl_no}" />
+      </h:commandButton>
+    </h:column>
+    </h:dataTable>
+  </h:form>
+  </center>
+</h:body>
+</html>
